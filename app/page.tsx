@@ -8,11 +8,15 @@ export default function HomePage() {
         <i className="grain" />
       </div>
 
-      <picture className="brand-mark">
-        <source media="(max-width: 640px)" srcSet="/kinTenki_logo-square.png" />
-        {/* The transparent source art is intentionally inverted on the dark field. */}
-        <img src="/kinTenki_logo-main.png" alt="KinTenki" />
-      </picture>
+      <div className="brand-lockup">
+        <picture className="brand-mark">
+          <source media="(max-width: 640px)" srcSet="/kinTenki_logo-square.png" />
+          {/* The transparent source art is intentionally inverted on the dark field. */}
+          <img src="/kinTenki_logo-main.png" alt="KinTenki" />
+        </picture>
+
+        <p className="chaos">Chaos coming soon…</p>
+      </div>
 
       <small className="copyright">© 2026 KinTenki Studios</small>
     </main>

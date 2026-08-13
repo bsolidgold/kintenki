@@ -9,6 +9,7 @@ describe("KinTenki launch page", () => {
 
     expect(screen.getByRole("main")).toBeInTheDocument();
     expect(screen.getByRole("img", { name: "KinTenki" })).toBeInTheDocument();
+    expect(screen.getByText("Chaos coming soon…")).toBeInTheDocument();
     expect(screen.getByText("© 2026 KinTenki Studios")).toBeInTheDocument();
 
     for (const forbiddenCopy of [
@@ -16,7 +17,6 @@ describe("KinTenki launch page", () => {
       "Colorado",
       "Utah",
       "We make games",
-      "Coming soon",
     ]) {
       expect(screen.queryByText(forbiddenCopy, { exact: false })).not.toBeInTheDocument();
     }

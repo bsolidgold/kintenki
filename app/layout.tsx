@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { Quantico } from "next/font/google";
 import "./globals.css";
+
+const quantico = Quantico({
+  subsets: ["latin"],
+  weight: "700",
+  style: "italic",
+  variable: "--font-quantico",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kintenkistudios.com"),
@@ -27,7 +35,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={quantico.variable}>
         {children}
         <Analytics />
       </body>
