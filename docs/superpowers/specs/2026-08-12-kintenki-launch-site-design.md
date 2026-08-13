@@ -94,10 +94,10 @@ A Vercel project named `kintenki` will be connected to the GitHub repository so 
 
 Domain behavior:
 
-- `kintenki.com` is the canonical production domain.
-- `www.kintenki.com` redirects to `kintenki.com` if configured.
-- `kintenkistudios.com` redirects permanently to `kintenki.com`.
-- `www.kintenkistudios.com` redirects permanently to `kintenki.com` if configured.
+- `kintenkistudios.com` is the canonical production domain.
+- `www.kintenkistudios.com` redirects to `kintenkistudios.com`.
+- `kintenki.com` redirects permanently to `kintenkistudios.com`.
+- `www.kintenki.com` redirects permanently to `kintenkistudios.com`.
 
 DNS changes will be limited to the records Vercel requires. The live result is not considered verified until the custom domains resolve, HTTPS succeeds, redirects behave as specified, and the deployed page is visually checked on desktop and mobile.
 
@@ -123,6 +123,6 @@ These can be added later when real content or a concrete product need exists.
 4. Motion is subtle and a reduced-motion still state is present.
 5. The page is responsive, accessible, and visually verified at desktop and mobile sizes.
 6. GitHub pushes to `main` trigger Vercel production deployments.
-7. `kintenki.com` serves the site as the canonical domain.
-8. `kintenkistudios.com` redirects permanently to `kintenki.com`.
+7. `kintenkistudios.com` serves the site as the canonical domain.
+8. `kintenki.com` redirects permanently to `kintenkistudios.com`.
 9. HTTPS works on both domains and their configured `www` variants.

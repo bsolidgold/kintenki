@@ -32,7 +32,7 @@ describe("KinTenki launch page", () => {
   });
 
   it("publishes canonical studio metadata", () => {
-    expect(metadata.metadataBase).toEqual(new URL("https://kintenki.com"));
+    expect(metadata.metadataBase).toEqual(new URL("https://kintenkistudios.com"));
     expect(metadata.alternates).toMatchObject({ canonical: "/" });
     expect(metadata.description).toContain("independent game studio");
   });

@@ -4,7 +4,7 @@
 
 **Goal:** Build and publish a one-screen KinTenki brand splash with responsive logo selection, restrained atmospheric motion, and automatic GitHub-to-Vercel production deployments.
 
-**Architecture:** A static Next.js App Router page renders one semantic main landmark containing a responsive logo and copyright. CSS owns the atmospheric field, responsive composition, and reduced-motion state; there are no client components, APIs, data stores, or runtime environment variables. Vercel connects directly to GitHub, serves `kintenki.com` canonically, and redirects the secondary domain.
+**Architecture:** A static Next.js App Router page renders one semantic main landmark containing a responsive logo and copyright. CSS owns the atmospheric field, responsive composition, and reduced-motion state; there are no client components, APIs, data stores, or runtime environment variables. Vercel connects directly to GitHub, serves `kintenkistudios.com` canonically, and redirects the shorter domain.
 
 **Tech Stack:** Next.js 16, React 19, TypeScript, CSS Modules/global CSS, Vitest, Testing Library, Vercel, GitHub
 
@@ -16,7 +16,7 @@
 - Desktop uses `kinTenki_logo-main.png`; mobile uses `kinTenki_logo-square.png`.
 - No visible tagline, studio description, location, navigation, form, social links, or filler content.
 - Motion is subtle and `prefers-reduced-motion: reduce` receives a still state.
-- `kintenki.com` is canonical; `kintenkistudios.com` permanently redirects to it.
+- `kintenkistudios.com` is canonical; `kintenki.com` permanently redirects to it.
 - The launch has no database, authentication, CMS, API routes, analytics, forms, or environment variables.
 
 ---
@@ -114,7 +114,7 @@ Expected: PASS.
 
 - [ ] **Step 1: Add metadata assertions**
 
-Assert exported metadata contains `metadataBase: new URL("https://kintenki.com")`, canonical `/`, and a description identifying KinTenki as an independent game studio.
+Assert exported metadata contains `metadataBase: new URL("https://kintenkistudios.com")`, canonical `/`, and a description identifying KinTenki as an independent game studio.
 
 - [ ] **Step 2: Run the test and verify RED**
 
@@ -161,8 +161,8 @@ Create `kintenki` in the `bretgolds-projects` team, link the local checkout, and
 
 - [ ] **Step 4: Deploy and attach domains**
 
-Deploy production, attach `kintenki.com`, `www.kintenki.com`, `kintenkistudios.com`, and `www.kintenkistudios.com`; configure the secondary domain and `www` variants to permanently redirect to `https://kintenki.com`.
+Deploy production, attach `kintenki.com`, `www.kintenki.com`, `kintenkistudios.com`, and `www.kintenkistudios.com`; configure `kintenki.com` and both `www` variants to permanently redirect to `https://kintenkistudios.com`.
 
 - [ ] **Step 5: Verify live behavior**
 
-Confirm the Vercel deployment is READY, `https://kintenki.com` returns 200 with the approved page, secondary and `www` hosts redirect to the canonical URL, HTTPS is valid, and desktop/mobile browser screenshots match the approved design. Record any DNS action still required instead of claiming domain completion prematurely.
+Confirm the Vercel deployment is READY, `https://kintenkistudios.com` returns 200 with the approved page, `kintenki.com` and both `www` hosts redirect to the canonical URL, HTTPS is valid, and desktop/mobile browser screenshots match the approved design. Record any DNS action still required instead of claiming domain completion prematurely.
