@@ -1,0 +1,172 @@
+:root {
+  color-scheme: dark;
+  --night: #050708;
+  --pressure: #101619;
+  --cloud: #46545d;
+  --mist: #c2c7c9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--night);
+}
+
+body {
+  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+}
+
+.brand-stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  background: var(--night);
+}
+
+.atmosphere,
+.pressure,
+.grain,
+.scan-line {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.atmosphere {
+  z-index: -1;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 48% 46%, rgb(39 49 55 / 42%), transparent 48%),
+    linear-gradient(145deg, #030405 0%, var(--pressure) 58%, #040506 100%);
+}
+
+.pressure {
+  inset: -28%;
+  border-radius: 48%;
+  filter: blur(52px);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.pressure-one {
+  background: radial-gradient(ellipse at center, rgb(70 84 93 / 72%), transparent 62%);
+  animation: pressure-drift-one 22s ease-in-out infinite alternate;
+}
+
+.pressure-two {
+  background: radial-gradient(ellipse at center, rgb(20 29 34 / 82%), transparent 64%);
+  mix-blend-mode: multiply;
+  animation: pressure-drift-two 28s ease-in-out infinite alternate;
+}
+
+.scan-line {
+  inset: -12% auto -12% 68%;
+  width: 1px;
+  background: linear-gradient(transparent, rgb(210 217 220 / 32%), transparent);
+  opacity: 0.46;
+  animation: scan-drift 18s ease-in-out infinite alternate;
+}
+
+.grain {
+  opacity: 0.13;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.83' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.78'/%3E%3C/svg%3E");
+}
+
+.brand-mark {
+  display: block;
+  width: min(82vw, 1180px);
+  opacity: 0;
+  filter: invert(1);
+  animation: mark-resolve 1.6s cubic-bezier(0.22, 1, 0.36, 1) 180ms forwards;
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.copyright {
+  position: absolute;
+  right: max(24px, calc(env(safe-area-inset-right) + 24px));
+  bottom: max(22px, calc(env(safe-area-inset-bottom) + 18px));
+  color: rgb(194 199 201 / 68%);
+  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.68rem;
+  font-stretch: condensed;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+@keyframes mark-resolve {
+  from {
+    opacity: 0;
+    transform: scale(0.992);
+    filter: invert(1) blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: invert(1) blur(0);
+  }
+}
+
+@keyframes pressure-drift-one {
+  from { transform: translate3d(-12%, -8%, 0) scale(1.05) rotate(-4deg); }
+  to { transform: translate3d(10%, 7%, 0) scale(1.22) rotate(5deg); }
+}
+
+@keyframes pressure-drift-two {
+  from { transform: translate3d(13%, 9%, 0) scale(1.15) rotate(5deg); }
+  to { transform: translate3d(-9%, -6%, 0) scale(1.02) rotate(-4deg); }
+}
+
+@keyframes scan-drift {
+  from { transform: translateX(-9vw); opacity: 0.22; }
+  to { transform: translateX(9vw); opacity: 0.48; }
+}
+
+@media (max-width: 640px) {
+  .brand-mark {
+    width: min(76vw, 430px);
+    transform: translateY(-2vh);
+  }
+
+  .copyright {
+    right: auto;
+    left: max(20px, calc(env(safe-area-inset-left) + 20px));
+    bottom: max(20px, calc(env(safe-area-inset-bottom) + 16px));
+    font-size: 0.62rem;
+  }
+
+  .scan-line {
+    left: 72%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pressure,
+  .scan-line,
+  .brand-mark {
+    animation: none;
+  }
+
+  .brand-mark {
+    opacity: 1;
+  }
+}
